@@ -70,7 +70,7 @@ def mail():
     smtp.starttls() 
       
     
-    smtp.login('Email', 'Password') 
+    smtp.login('mfreire1996@gmail.com', 'Kk@6jJ/X-Y') 
   
     
     msg = message("Good!", "Hi there!", 
