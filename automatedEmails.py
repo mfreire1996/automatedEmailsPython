@@ -13,58 +13,45 @@ def message(subject="Python Notification",
     msg = MIMEMultipart() 
       
     msg['Subject'] = subject   
-      
-    
+         
     msg.attach(MIMEText(text))   
   
-
     if img is not None: 
-  
          
         if type(img) is not list: 
-            
-            
+                      
             img = [img]   
-  
-        
+    
         for one_img in img: 
-            
-              
+                    
             img_data = open(one_img, 'rb').read()   
-              
             
             msg.attach(MIMEImage(img_data,  
                                  name=os.path.basename(one_img))) 
-  
-    
+   
     if attachment is not None: 
-  
-          
+         
         if type(attachment) is not list: 
-            
-              
+                     
             attachment = [attachment]   
   
         for one_attachment in attachment: 
   
             with open(one_attachment, 'rb') as f: 
-                
-                
+                           
                 file = MIMEApplication( 
                     f.read(), 
                     name=os.path.basename(one_attachment) 
                 ) 
             file['Content-Disposition'] = f'attachment;\ 
             filename="{os.path.basename(one_attachment)}"' 
-              
-            
+                   
             msg.attach(file) 
     return msg 
   
   
 def mail(): 
-    
-    
+     
     smtp = smtplib.SMTP('smtp.gmail.com', 587) 
     smtp.ehlo() 
     smtp.starttls() 
@@ -77,15 +64,13 @@ def mail():
                   r"C:\Users\Dell\Downloads\Garbage\Cartoon.jpg", 
                   r"C:\Users\Dell\Desktop\slack.py") 
       
-    
     to = ["ABC@gmail.com", 
           "XYZ@gmail.com", "insaaf@gmail.com"] 
   
     
     smtp.sendmail(from_addr="hello@gmail.com", 
                   to_addrs=to, msg=msg.as_string()) 
-      
-   
+        
     smtp.quit()   
   
   
